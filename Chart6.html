@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .vega-actions a {
+        margin-right: 12px;
+        color: #757575;
+        font-weight: normal;
+        font-size: 13px;
+    }
+    .error {
+        color: red;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@3.4.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@4"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"width": 400, "height": 300}, "mark": {"tooltip": null}}, "data": {"name": "data-20383433e6562cc8855fc15dec109c8c"}, "mark": "bar", "encoding": {"color": {"type": "nominal", "field": "booking"}, "x": {"type": "nominal", "field": "Minutes"}, "y": {"type": "quantitative", "field": "PercentOfTotal", "stack": null}}, "height": 380, "selection": {"selector018": {"type": "interval", "bind": "scales", "encodings": ["x", "y"]}}, "transform": [{"window": [{"op": "sum", "field": "session", "as": "TotalTime"}], "frame": [null, null]}, {"calculate": "datum.session / datum.TotalTime * 100", "as": "PercentOfTotal"}], "width": 380, "$schema": "https://vega.github.io/schema/vega-lite/v3.4.0.json", "datasets": {"data-20383433e6562cc8855fc15dec109c8c": [{"Minutes": 0, "booking": 0, "session": 190, "session_start_text": 190, "session_end_text": 190, "clickouts": 190, "Time_Difference": 190}, {"Minutes": 0, "booking": 1, "session": 62, "session_start_text": 62, "session_end_text": 62, "clickouts": 62, "Time_Difference": 62}, {"Minutes": 1, "booking": 0, "session": 1261, "session_start_text": 1261, "session_end_text": 1261, "clickouts": 1261, "Time_Difference": 1261}, {"Minutes": 1, "booking": 1, "session": 86, "session_start_text": 86, "session_end_text": 86, "clickouts": 86, "Time_Difference": 86}, {"Minutes": 2, "booking": 0, "session": 2945, "session_start_text": 2945, "session_end_text": 2945, "clickouts": 2945, "Time_Difference": 2945}, {"Minutes": 2, "booking": 1, "session": 280, "session_start_text": 280, "session_end_text": 280, "clickouts": 280, "Time_Difference": 280}, {"Minutes": 3, "booking": 0, "session": 3119, "session_start_text": 3119, "session_end_text": 3119, "clickouts": 3119, "Time_Difference": 3119}, {"Minutes": 3, "booking": 1, "session": 341, "session_start_text": 341, "session_end_text": 341, "clickouts": 341, "Time_Difference": 341}, {"Minutes": 4, "booking": 0, "session": 1271, "session_start_text": 1271, "session_end_text": 1271, "clickouts": 1271, "Time_Difference": 1271}, {"Minutes": 4, "booking": 1, "session": 157, "session_start_text": 157, "session_end_text": 157, "clickouts": 157, "Time_Difference": 157}, {"Minutes": 5, "booking": 0, "session": 221, "session_start_text": 221, "session_end_text": 221, "clickouts": 221, "Time_Difference": 221}, {"Minutes": 5, "booking": 1, "session": 40, "session_start_text": 40, "session_end_text": 40, "clickouts": 40, "Time_Difference": 40}, {"Minutes": 6, "booking": 0, "session": 13, "session_start_text": 13, "session_end_text": 13, "clickouts": 13, "Time_Difference": 13}, {"Minutes": 6, "booking": 1, "session": 1, "session_start_text": 1, "session_end_text": 1, "clickouts": 1, "Time_Difference": 1}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div class="error" style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
